@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'ruby-debug'
-
 class Renderer
 
   def initialize(pov, poi, up, alpha, r)
