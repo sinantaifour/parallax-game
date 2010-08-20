@@ -1,3 +1,4 @@
+# Implements a matrix with operations on it.
 class Matr
 
   attr_reader :m, :n
@@ -43,6 +44,11 @@ class Point < Matr
 
   def initialize(*args)
     super(args.length, 1, args.map { |n| [n] })
+  end
+
+  def ==(other)
+    return false if other.n != self.n or other.m != 1
+    return (1..self.m).map { |i| self[i, 1] == other[i, 1] }.all?
   end
 
 end

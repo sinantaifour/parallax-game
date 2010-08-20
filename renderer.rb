@@ -1,3 +1,4 @@
+# Built for parameters of a camera, maps points from the scene to their place on the frame.
 class Renderer
 
   def initialize(pov, poi, up, alpha, r)
