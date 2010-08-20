@@ -2,6 +2,7 @@ load 'matr.rb'
 load 'camera.rb'
 load 'frame.rb'
 load 'obj.rb'
+load 'renderer.rb'
 
 dim = 200
 frame = Frame.new(2 * dim, 2 * dim)
@@ -15,7 +16,7 @@ while true
   poi = Point.new(0, 0, 0, 1)
   up = Point.new(0, 0, 1, 1)
   alpha = 30 / 180.0 * Math::PI
-  r = Camera.new(pov, poi, up, alpha, 1)
+  c = Camera.new(pov, poi, up, alpha, 1)
   o = Obj.new(<<-BOX)
     (-1,1,-1)(1,1,-1)(1,1,1)(-1,1,1)
     (-1,-1,-1)(1,-1,-1)(1,-1,1)(-1,-1,1)
@@ -25,16 +26,11 @@ while true
     (-1,1,1)(-1,-1,1)
   BOX
 
-  ps = o.instance_eval { @points }.values
+  r = Renderer.new(c, frame)
+  r.add_obj(o)
+  r.draw
 
-  frame.clear
 
-  ps.each_with_index do |po, i|
-    temp = r.transform(po)
-    frame.pixel(dim + temp[1] * dim, dim + temp[2] * dim)
-  end
-
-  frame.draw
 
   povx += 0.05
 

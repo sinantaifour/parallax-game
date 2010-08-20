@@ -46,12 +46,12 @@ class Point < Matr
     super(args.length, 1, args.map { |n| [n] })
   end
 
-  def ==(other)
+  def eq(other)
     return false if other.m != self.m or other.n != 1
     return (1..self.m).map { |i| self[i, 1] == other[i, 1] }.all?
   end
 
-  def hash
+  def identifier
     "#{m}," + (1..self.m).map { |i| self[i, 1].to_f.to_s }.join(",")
   end
 

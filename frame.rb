@@ -14,7 +14,7 @@ class Frame
   end
 
   def pixel(x ,y)
-    @screen.put_pixel(x, y, @white)
+    @screen.put_pixel((@width / 2.0) * (1 + x), (@height / 2.0) * (1 + y), @white)
   end
 
   def clear
