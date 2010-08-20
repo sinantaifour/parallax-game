@@ -21,7 +21,9 @@ class Renderer
       rendered_points = {}
       o.get_points.each do |p|
         rendered_points[p] = @camera.transform(p)
-        @frame.pixel(rendered_points[p][1], rendered_points[p][2])
+      end
+      o.get_edges.each do |(p1, p2)|
+        @frame.line(rendered_points[p1][1], rendered_points[p1][2], rendered_points[p2][1], rendered_points[p2][2])
       end
     end
     @frame.draw

@@ -16,6 +16,10 @@ class Frame
     @screen.put_pixel((@width / 2.0) * (1 + x), (@height / 2.0) * (1 + y), @white)
   end
 
+  def line(x0, y0, x1, y1)
+    @screen.draw_line((@width / 2.0) * (1 + x0), (@height / 2.0) * (1 + y0), (@width / 2.0) * (1 + x1), (@height / 2.0) * (1 + y1), @white)
+  end
+
   def clear
     @screen.fill_rect(0, 0, @width, @height, @black)
   end
