@@ -1,7 +1,6 @@
 # Interface to drawing surface
 
 require 'sdl'
-
 SDL.init(SDL::INIT_VIDEO)
 
 class Frame
