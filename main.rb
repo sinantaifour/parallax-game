@@ -1,6 +1,7 @@
 load 'matr.rb'
 load 'camera.rb'
 load 'frame.rb'
+load 'obj.rb'
 
 dim = 200
 frame = Frame.new(2 * dim, 2 * dim)
@@ -15,15 +16,16 @@ while true
   up = Point.new(0, 0, 1, 1)
   alpha = 30 / 180.0 * Math::PI
   r = Camera.new(pov, poi, up, alpha, 1)
-  ps = []
-  ps << Point.new(1,1,1,1)
-  ps << Point.new(1,1,-1,1)
-  ps << Point.new(1,-1,1,1)
-  ps << Point.new(1,-1,-1,1)
-  ps << Point.new(-1,1,1,1)
-  ps << Point.new(-1,1,-1,1)
-  ps << Point.new(-1,-1,1,1)
-  ps << Point.new(-1,-1,-1,1)
+  o = Obj.new(<<-BOX)
+    (-1,1,-1)(1,1,-1)(1,1,1)(-1,1,1)
+    (-1,-1,-1)(1,-1,-1)(1,-1,1)(-1,-1,1)
+    (-1,1,-1)(-1,-1,-1)
+    (1,1,-1)(1,-1,-1)
+    (1,1,1)(1,-1,1)
+    (-1,1,1)(-1,-1,1)
+  BOX
+
+  ps = o.instance_eval { @points }.values
 
   frame.clear
 
