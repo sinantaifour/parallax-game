@@ -47,8 +47,12 @@ class Point < Matr
   end
 
   def ==(other)
-    return false if other.n != self.n or other.m != 1
+    return false if other.m != self.m or other.n != 1
     return (1..self.m).map { |i| self[i, 1] == other[i, 1] }.all?
+  end
+
+  def hash
+    "#{m}," + (1..self.m).map { |i| self[i, 1].to_f.to_s }.join(",")
   end
 
 end

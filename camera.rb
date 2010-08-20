@@ -1,5 +1,5 @@
 # Built for parameters of a camera, maps points from the scene to their place on the frame.
-class Renderer
+class Camera
 
   def initialize(pov, poi, up, alpha, r)
     @pov, @poi, @up = pov, poi, up

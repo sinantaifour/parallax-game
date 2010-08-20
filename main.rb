@@ -1,6 +1,5 @@
 load 'matr.rb'
-load 'point.rb'
-load 'renderer.rb'
+load 'camera.rb'
 
 require 'sdl'
 
@@ -34,7 +33,7 @@ while true
   poi = Point.new(0, 0, 0, 1)
   up = Point.new(0, 0, 1, 1)
   alpha = 30 / 180.0 * Math::PI
-  r = Renderer.new(pov, poi, up, alpha, 1)
+  r = Camera.new(pov, poi, up, alpha, 1)
   ps = []
   ps << Point.new(1,1,1,1)
   ps << Point.new(1,1,-1,1)
